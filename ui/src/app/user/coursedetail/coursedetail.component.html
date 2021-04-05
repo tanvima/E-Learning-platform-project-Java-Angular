@@ -1,0 +1,200 @@
+
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="jumbotron jumbotron-responsive">
+      <div class="jumbotron-course">
+        <div class="course">
+
+<ng-container *ngIf="course">
+
+          <h1>{{course.courseName}}</h1>
+          <p class="course-desc text-justify">
+           {{course.courseDesc}} </p>
+          <h4>
+            <span class="icon-person fa-1x"
+              ><i class="fa fa-user" aria-hidden="true" matTooltip="Author name"></i
+            ></span>
+            <small class="course-author"> {{course.authorName}}</small>
+          </h4>
+          <h4>{{course.noOfVideo}} weeks</h4>
+        </ng-container>
+        </div>
+      
+        <div class="rating-like-comment">
+          <ngx-input-star-rating
+            [disabled]="true"
+            [value]=course.rating
+          ></ngx-input-star-rating>
+          <div>
+            <i class="fa fa-thumbs-up fa-2x" aria-hidden="true"></i
+            ><span class="like-comment-text">{{noOfLike}}</span>
+          </div>
+
+          <div>
+            <i class="fa fa-commenting fa-2x" aria-hidden="true"></i
+            ><span class="like-comment-text">{{noOfComment}}</span>
+          </div>
+        </div>
+        <button *ngIf = 'inCart' class="btn enroll-btn" type="button">In Cart</button>
+        <button *ngIf = 'isEnrolled' class="btn enroll-btn" type="button" (click)=gotoMyCourse()>Get Started</button>
+        <button *ngIf='!inCart && !isEnrolled' class="btn enroll-btn" type="button" (click)=addtoCart()>Add to Cart</button>
+      </div>
+      <div class="jumbotron-image">
+        <img
+          [src]=course.courseLogo
+          class="img-fluid rounded float-right"
+          width="700"
+          height="700"
+          alt="Media not supported"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid container-fluid-take-course">
+  <div class="row">
+    <div class="col-lg-9 col-sm-12">
+      <div class="take-course-section">
+        <h3><b>Take Course</b></h3>
+        <p >
+          A Course Specialization is a series of topics that helps you master a
+          skill. To begin, enroll in the Specialization directly, or review its
+          topics and choose the one you'd like to start with. When you subscribe
+          to a course that is part of a Specialization, you’re automatically
+          subscribed to the full Specialization. It’s okay to complete just one
+          course — you can pause your learning or end your subscription at any
+          time. Visit your learner dashboard to track your course enrollments
+          and your progress.
+        </p>
+        <h3><b>Earn a Certificate</b></h3>
+        <p >
+          When you finish every course and complete the hands-on project, you'll
+          earn a Certificate that you can share with prospective employers and
+          your professional network.
+        </p>
+      </div>
+    </div>
+    <div
+      class="col-lg-3 col-sm-12 col-xs-12 sidebar-icons sidebar-icons-responsive"
+    >
+      <div class="col">
+        <i class="fa fa-certificate fa-2x icon-wrap"></i
+        ><span class="icon-text">Sharable Certificate</span>
+      </div>
+      <div class="col">
+        <i class="fa fa-globe fa-2x icon-wrap" aria-hidden="true"></i
+        ><span class="icon-text">100% online courses</span>
+      </div>
+      <div class="col">
+        <i class="fa fa-clock-o fa-2x icon-wrap" aria-hidden="true"></i>
+        <span class="icon-text">{{course.noOfVideo}} weeks </span>
+      </div>
+      <div class="col">
+        <i class="fa fa-commenting-o fa-2x icon-wrap" aria-hidden="true"></i>
+        <span class="icon-text">English</span>
+      </div>
+    </div>
+  </div>
+</div>
+<hr />
+<div class="container-fluid container-about-course">
+  <div class="row">
+    <div class="col-12">
+      <h3 class="text-center m-5 comments-heading ">
+        Syllabus - What you will learn from this course
+      </h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <ng-container *ngIf='course.video.length==0;else elseBlock'>
+        <div class="text-center">
+         No Video Exist
+        </div>
+        </ng-container>
+        <ng-template #elseBlock>    
+      <div class="media" *ngFor="let c of course.video; let index = index">
+        <div class="container">
+          <div class="card mb-3">
+            <div class="row no-gutters">
+              <div class="col-md-3 p-2">
+                
+                <video [src]=c.videoPath  class="card-img" #video1 (loadedmetadata)="onMetadata($event, video1)"></video>
+               
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <div class="card-title"><b>{{c.videoName}}</b></div>
+                  <p class="card-text text-justify">
+                    {{c.videoDesc}}
+                  </p>
+                  <p class="card-text">
+                    <small class="text-muted">
+                      <i
+                        class="fa fa-clock-o fa-2x icon-wrap"
+                        aria-hidden="true"
+                      ></i
+                      ><span style="margin: 0px">{{duration[index] |number:'2.0-2'}} s</span></small
+                    >
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+
+    </div>
+  </div>
+</div>
+
+<hr />
+<div class="container-fluid container-comments">
+  <div class="comment-heading-container">
+    <h2 class="comments-heading ">Students feedback</h2>
+    <div class="comment-average-rating"><i class="fa fa-star" aria-hidden="true" style="color: rgb(175, 175, 68);"></i>
+     {{course.rating}}</div>
+  </div>
+  <ng-container *ngIf="course.comment.length !=0 ; else elseCommentBlock">
+  <div *ngFor="let c of course.comment;let index=index">
+    <div class="commentContainer">
+      <div class="individualReview">
+        <div class="individualReviewNameAvatar">
+          <div
+            data-purpose="avatar"
+            aria-hidden="true"
+            class="avatar avatar-heading-md"
+            
+          >
+            {{DummyCommentList[index].nameCredentials }}
+          </div>
+        </div>
+        <div class="individualReviewComment">
+          <div class="individual-review_name-container">
+            <div
+              class="individual-review-name avatar-heading-md"
+              data-purpose="review-detail-user-name"
+            >
+            <!--   {{c.name}} --><!-- Optional Name of reviewers -->
+            </div>
+          </div>
+          <div class="show-more-content-container">
+              <div class="comment">
+                  {{c.comment}}
+              </div>
+          </div>
+        </div>
+      </div>
+      <hr/>
+    </div>
+  </div>
+</ng-container>
+<ng-template #elseCommentBlock>
+  <div class="text-center">
+  <h2>No feedbacks yet...</h2>
+</div>
+</ng-template>
+</div>

@@ -1,0 +1,204 @@
+
+<div class="container-fluid">
+    <div class="row">
+      <div class="jumbotron jumbotron-responsive">
+        <div class="jumbotron-course">
+          <div class="course">
+  
+  <ng-container *ngIf="course">
+  
+            <h1>{{course.courseName}}</h1>
+            <p class="course-desc text-justify">
+             {{course.courseDesc}} </p>
+            <h4>
+              <span class="icon-person fa-1x"
+                ><i class="fa fa-user" aria-hidden="true" matTooltip="Author name"></i
+              ></span>
+              <small class="course-author"> {{course.authorName}}</small>
+            </h4>
+            <h4>{{course.noOfVideo}} weeks</h4>
+          </ng-container>
+          </div>
+        
+          <div class="rating-like-comment">
+            <ngx-input-star-rating
+              [disabled]="true"
+              [value]=course.rating
+            ></ngx-input-star-rating>
+            <div>
+              <i class="fa fa-thumbs-up fa-2x" aria-hidden="true"></i
+              ><span class="like-comment-text">{{noOfLike}}</span>
+            </div>
+  
+            <div>
+              <i class="fa fa-commenting fa-2x" aria-hidden="true"></i
+              ><span class="like-comment-text">{{noOfComment}}</span>
+            </div>
+          </div>
+         
+        </div>
+        <div class="jumbotron-image ml-5">
+          <img
+            [src]=course.courseLogo
+            class="img-fluid rounded float-right"
+            width="700"
+            height="700"
+            alt="Media not supported"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr />
+
+
+  
+  <div class="container-fluid container-fluid-take-course">
+    
+      
+  <mat-card class="videoCourseDiv" >
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <h3 class="text-center m-5 comments-heading">
+            Syllabus - What you will learn from this course
+          </h3>
+        </div>
+      </div>
+      <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <ng-container *ngIf='course.video.length==0;else elseBlock'>
+            <div class="text-center">
+             No Video Exist
+            </div>
+            </ng-container>
+            <ng-template #elseBlock>    
+          <div class="media" *ngFor="let c of course.video; let index = index">
+            <div class="container">
+              <div class="card mb-3">
+                <div class="row no-gutters">
+                  <div class="col-md-3 p-2">
+                 
+                    
+                    <video [src]=c.videoPath #video1 (loadedmetadata)="onMetadata($event, video1)" class="card-img"></video>
+                  </div>
+                  <div class="col-md-8">
+                    <div class="card-body">
+                      <div class="card-title"><b>{{c.videoName}}</b></div>
+                      <p class="card-text text-justify">
+                        {{c.videoDesc}}
+                      </p>
+                      <p class="card-text">
+                        <small class="text-muted">
+                          <i
+                            class="fa fa-clock-o fa-2x icon-wrap"
+                            aria-hidden="true"
+                          ></i
+                          ><span style="margin: 0px">{{duration[index] |number:'2.0-2'}} seconds long</span></small
+                        >
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+    
+        </div>
+      </div>
+
+    </div>
+    </div>
+    </mat-card>
+
+    <hr />
+    <mat-card  class="feedbackCourseDiv" *ngIf="course.feedback.length!=0">
+
+    <div class="container-fluid container-comments">
+        <div class="comment-heading-container">
+          <h2 class="comments-heading ">Students Feedback</h2>
+          <div class="comment-average-rating"><i class="fa fa-star" aria-hidden="true" style="color: rgb(175, 175, 68);"></i>
+           {{course.rating}}</div>
+        </div>
+    <div *ngFor="let c of course.feedback;let index=index">
+        <div class="commentContainer">
+          <div class="individualReview">
+            <div class="individualReviewNameAvatar">
+              <img alt="Media not supported" src="data:image/png;base64,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" class="avtar">
+            </div>
+            <div class="individualReviewComment">
+              <div class="individual-review_name-container">
+                <div
+                  class="individual-review-name avatar-heading-md"
+                  data-purpose="review-detail-user-name"
+                >
+                <!--   {{c.name}} --><!-- Optional Name of reviewers -->
+                </div>
+              </div>
+              <div class="show-more-content-container">
+                  <div class="comment mb-1">
+                      {{c.feedback}}
+                  </div>
+                  <ngx-input-star-rating
+              [disabled]="true"
+              [value]=c.rating
+            ></ngx-input-star-rating>
+              </div>
+            </div>
+          </div>
+          <hr/>
+        </div>
+      </div>
+  </div>
+</mat-card>
+  
+  <hr />
+  <mat-card class="videoCourseDiv" *ngIf="course.comment.length!=0">
+  <div class="container-fluid container-comments">
+    <div class="comment-heading-container">
+      <h2 class="comments-heading ">Students Comments</h2>
+      <div class="comment-average-rating"><i class="fa fa-commenting " aria-hidden="true" style="color: rgb(175, 175, 68);"></i
+        > {{noOfComment}}
+     </div>
+     
+    </div>
+
+    
+    
+    <div *ngFor="let c of course.comment;let index=index">
+      <div class="commentContainer">
+        <div class="individualReview">
+          <div class="individualReviewNameAvatar">
+            <div
+              data-purpose="avatar"
+              aria-hidden="true"
+              class="avatar avatar-heading-md"
+              
+            >
+              {{DummyCommentList[index].nameCredentials }}
+            </div>
+          </div>
+          <div class="individualReviewComment">
+            <div class="individual-review_name-container">
+              <div
+                class="individual-review-name avatar-heading-md"
+                data-purpose="review-detail-user-name"
+              >
+              <!--   {{c.name}} --><!-- Optional Name of reviewers -->
+              </div>
+            </div>
+            <div class="show-more-content-container">
+                <div class="comment">
+                    {{c.comment}}
+                </div>
+            </div>
+          </div>
+        </div>
+        <hr/>
+      </div>
+    </div>
+  </div>
+</mat-card>
+  

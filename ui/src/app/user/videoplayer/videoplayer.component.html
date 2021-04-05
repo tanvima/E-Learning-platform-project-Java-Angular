@@ -1,0 +1,87 @@
+<!-- <p>videoplayer works!</p>
+<h1 class="display-1">{{videotitle}}</h1>
+<div class="container">
+    <div class="title">
+      
+  </div>
+  <br>
+  <video class="video" controls  [src]=src 
+  #videoPlayer width="auto" height="auto" allow="autoplay">
+  Browser not supported
+  </video>
+  <br>
+  <button *ngIf="nextButton"(click)="onNext(videoid)">{{nextButton}}</button>
+  <button *ngIf="!nextButton"(click)="gotoCertificate()">Go To Certificate Generation</button>
+  <button *ngIf="flagfornext" (click)="onBack()">Back to Videos</button>
+    </div> -->
+
+<div class="container-fluid ">
+  <div class="row buttons1 d-flex mt-5 pl-5">
+    <a ><div class="course-title">{{coursename}}&nbsp; ></div></a>
+    <div class="course-title ml-2">{{ videotitle }}</div>
+    <div class="ml-auto pr-5">
+      <button class="btn btn-secondary" (click)="onBack()">
+        Back to Videos
+      </button>
+    </div>
+  </div>
+</div>
+<div class="container video-player">
+  <div class="row">
+    <!-- <div class="row title">
+        Compute Engine
+        <hr class="hr" />
+      </div> -->
+    <div class="row buttons d-flex">
+      <div class="title">{{ videotitle }}</div>
+      <hr class="hr" />
+    </div>
+    <div class="row video">
+      <video
+        class="video"
+        controls
+        [src]="src"
+        #videoPlayer
+        width="auto"
+        height="auto"
+        allow="autoplay"
+      >
+        Browser not supported
+      </video>
+    </div>
+    <div class="row buttons d-flex mt-2">
+      <!-- <div>
+        <button class="btn btn-lg pl-5 pr-5 btn-secondary">Prev</button>
+      </div> -->
+      <div class="ml-auto">
+        <button
+          *ngIf="nextButton"
+          class="btn btn-lg pl-5 pr-5 btn-secondary"
+          (click)="onNext(videoid)"
+        >
+          {{ nextButton }}
+        </button>
+        <button
+          *ngIf="!nextButton"
+          (click)="gotoCertificate()"
+          class="btn btn-lg pl-5 pr-5 btn-secondary"
+        >
+          Go to Certification
+        </button>
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col-4">
+        <h3><b>Description:</b></h3>
+      </div>
+      <div class="col-8 videoDesc text-justify">
+        {{videodesc}}
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<!-- <button mat-stroked-button (click)="addToCart()">Show snack-bar</button> -->

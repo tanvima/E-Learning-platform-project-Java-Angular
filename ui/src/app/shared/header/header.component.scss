@@ -1,0 +1,69 @@
+
+img{
+ padding:10px;
+ margin:4px
+}
+
+.header-top{
+   display: flex;
+   height: 70px;
+   //justify-content: space-evenly;
+}
+.navbar{
+   background-color: #6c757d;
+   
+}
+button{
+   border: none;
+   border-radius: 4px;
+   cursor: pointer;
+   
+}
+li{
+   button{
+      background-color:  #6c757d;
+      font-size:20px;
+      outline: none;
+    
+   }
+}
+mat-icon{
+  
+   &:hover {
+		transform: scale(1.15);
+		cursor: pointer;
+	}
+   color:white;
+   font-size:30px
+}
+
+.dropText{
+   color: #6c757d;
+   cursor: pointer;
+}
+.menuIcon{
+   background-color:#6c757d;
+}
+.nav-menu{
+   right: 0;
+   left: auto;
+}
+
+::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex{
+   background-color: white;
+}
+::ng-deep .mat-form-field-underline{
+   bottom: 0;
+}
+::ng-deep .mat-form-field-wrapper{
+   padding-bottom: 0;
+}
+.logotext{
+   color:white;
+   margin:8px;
+   margin-bottom: 10px;
+   padding-bottom: 10px;
+ }
+ .option{
+   cursor: pointer;
+ }

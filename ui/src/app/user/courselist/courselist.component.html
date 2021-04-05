@@ -1,0 +1,10 @@
+<div class="container course-list">
+  <h2>{{ categoryname }}</h2>
+  <hr class="hrstyle" />
+  <div class="course row">
+    <!-- <h1>{{errMessage}}</h1> -->
+    <ng-container *ngFor="let c of course">
+      <app-coursecard [mycourse]="c" class="col-md-4"></app-coursecard>
+    </ng-container>
+  </div>
+</div>

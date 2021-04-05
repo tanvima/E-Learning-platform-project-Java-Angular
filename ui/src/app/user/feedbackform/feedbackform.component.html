@@ -1,0 +1,31 @@
+<h1 mat-dialog-title >Feedback </h1>
+<div  class=" container text-center">
+  <form [formGroup]="form" (ngSubmit)="addFeedback()">
+    <ngx-input-star-rating formControlName="rating"> </ngx-input-star-rating>
+
+    <div class="row form-group mt-3">
+      <!-- <label for="exampleFormControlTextarea1">Add Feedback</label> -->
+      <textarea
+        class="form-control"
+        formControlName="feedback"
+        rows="2"
+        placeholder="Give Your Feedback..."
+      ></textarea>
+    </div>
+    <!-- <div mat-dialog-actions>
+      <button mat-button cdkFocusInitial type="submit">Ok</button>
+    </div> -->
+    <div class="row buttons d-flex mt-2">
+      <div>
+        <button class="btn btn-md  btn-secondary"  (click)="onNoClick()" > No Thanks </button>
+      </div>
+      <div class="ml-auto">
+        <!-- <button class="btn btn-lg pl-5 pr-5 btn-secondary">nextButton</button> -->
+        <button type="submit" class="btn btn-md  btn-secondary">
+         Submit
+        </button>
+      </div>
+    </div>
+  </form>
+  <!-- <button mat-button (click)="onNoClick()">No Thanks</button> -->
+</div>

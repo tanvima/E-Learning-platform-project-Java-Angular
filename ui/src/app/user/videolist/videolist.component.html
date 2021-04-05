@@ -1,0 +1,38 @@
+
+<ng-container *ngIf="course !=undefined && course != null">
+  <div class="container-fluid "  [ngStyle]="{'box-shadow':'none'}">
+    <h1 class="text-center  headingcourse">{{course.courseName}}</h1>
+    <hr class="hrstyle" />
+  </div>
+<ng-container *ngIf="course.video.length!=0 ; else elseBlock">
+<div class="media" *ngFor="let v of course.video, let index=index">
+    
+    <br>
+    <div class="container" (click)="gotoVideoPlayer(v.videoId,course.courseId)">
+      <div class="column col-4">
+      <h2 class="text-size">{{v.videoName}}</h2>
+      <video [src]=v.videoPath  [hidden]='true' #video1 (loadedmetadata)="onMetadata($event, video1)"></video>
+      &nbsp;
+      <h1 class="display-heading">{{index+1}}</h1>
+    </div>
+        <div class="media-body col-8">
+          <!-- <h4>Title:</h4>
+         <a class="mt-text">{{v.videoName}}</a>
+          <h4>Description:</h4> -->
+          <p class="mt-text text-justify">{{v.videoDesc}}</p>
+          <!-- <h4>Duration:</h4> -->
+         <p class="mt-text">{{duration[index] | number:'2.0-2'}} s</p>
+         <p class="font-weight-bold">Status : {{videostatus[index].status}}</p>
+        
+        </div>
+       </div>
+    
+ </div>
+ </ng-container>
+ <ng-template #elseBlock>
+   
+  <div class="text-center">
+    <h2>No Videos present...</h2>
+  </div>
+
+</ng-template>

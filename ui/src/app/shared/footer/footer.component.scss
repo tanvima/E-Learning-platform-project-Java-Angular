@@ -1,0 +1,72 @@
+.contact-list a{
+  color: white;
+}
+
+.section  {
+   position: relative;
+   width: 100%;
+   bottom: 0;
+  margin-top: 120px;
+  background-color: #6c757d;
+  color: rgb(223, 219, 219);
+}
+.aHref{
+  color: white;
+}
+
+// .footer-classic a, .footer-classic a:focus, .footer-classic a:active {
+//   color: black;
+// }
+.nav-list li {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+ul, ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.facebook-bg{
+      color: #3b5998;
+      border-radius: 15px;
+      height:30px;
+      width:30px;
+  }
+  .twitter-bg{
+      color: #00acee;
+      border-radius: 15px;
+      height:30px;
+      width:30px;
+  }
+  .insta-bg{
+    color: #F2370E;
+      border-radius: 15px;
+      height:30px;
+      width:30px;
+  }
+  .linked-bg{
+      color:  #0e76a8 ;
+      border-radius: 15px;
+      height:30px;
+      width:30px;
+  }
+  .google-bg{
+      color:  #db4a39 ;
+      border-radius: 15px;
+      height:30px;
+      width:30px;
+  }
+  .dribble-bg{
+      color:  #ea4c89;
+      border-radius: 15px;
+      height:30px;
+      width:30px;
+  }
+  .footer-copyright{
+    background-color: black;
+    color: white;
+  }
+  .col-md-4, p,.nav-list,dd{
+    margin-top: 20px;
+  }

@@ -1,0 +1,45 @@
+.courses {
+    background-color: #e1e2e4;
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 40px;
+    margin-top:200px;
+  
+    .card {
+      border-radius: 4px;
+      background: #fff;
+      box-shadow: 0 6px 10px rgba(0, 0, 0, 0.08), 0 0 6px rgba(0, 0, 0, 0.05);
+      padding: 0;
+      cursor: pointer;
+      :hover{
+        transform: scale(1.05);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.06);
+      }
+    }
+    .container {
+      background-color: white;
+    }
+    p:first-child {
+      font-size: 2rem;
+    }
+  }
+  
+
+  .course{
+    justify-content: space-evenly;
+  }
+  .container h2{
+    color: #42413d;
+    margin-top: 5%;
+    font-size: 2rem;
+    text-align: center;
+    font-weight: 700;
+    margin-bottom: 2%;
+  }
+
+.hrstyle{
+  border: 2px dashed #777777; 
+  width: 80%;
+  margin-bottom: 5%;
+}

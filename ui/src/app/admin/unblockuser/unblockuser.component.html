@@ -1,0 +1,28 @@
+<!-- <button  (click)="getAllBlockUser()">getAllBlockUser</button> -->
+<div class="container">
+  <div class="row">
+    
+    <table class="table table-bordered">
+        <tr>
+          <th *ngFor="let columnName of headers">
+            {{columnName}}
+          </th>
+          <th >
+            {{"Button"}}
+          </th>
+        </tr>
+     <tr *ngFor="let user of blockedUsers; let index = index">
+      <td >
+        {{index+1}}
+      </td>
+      <td>
+        {{user.name}}
+      </td>
+      <td>
+        {{user.email}}
+      </td>
+      <td><button class="btn" type="button" (click)="onUnblock(user.id)">Unblock</button></td>
+     </tr>
+    </table>
+  </div>
+</div>

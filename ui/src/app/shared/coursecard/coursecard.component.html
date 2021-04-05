@@ -1,0 +1,29 @@
+<div class=" card-div"  *ngIf='mycourse!=undefined'>
+    <a (click)="gotoCourse(mycourse.courseId)"><div class="card mb-2 "  >
+      <div class="image-container">
+        <img class="card-img-top"
+        [src]=mycourse.courseLogo alt="Card image cap">
+      </div>
+     
+      <div class="card-body">
+        <div class="course-content"> 
+        <h3 class="card-title">{{mycourse.courseName |uppercase}}</h3> 
+          <h3 *ngIf ="!isPrime" class="card-title">{{mycourse.coursePrice |currency:'INR'}}</h3>
+          <h3 *ngIf ="isPrime" class="card-title oldprice">{{mycourse.coursePrice|currency:'INR'}}</h3>
+          <!--30% Off-->
+          <h3 *ngIf ="isPrime" class="card-title">{{mycourse.coursePrice |primeprice|currency:'INR'}}</h3>
+        </div>
+      
+    
+        <div class="course-content text-secondary">
+          <h4 class="card-title">{{mycourse.authorName}}</h4>
+          <h4 class="card-title">{{mycourse.noOfVideo}} weeks</h4>
+        </div>
+       
+        <ngx-input-star-rating [disabled]="true" [value]=mycourse.rating></ngx-input-star-rating>
+      
+      </div>
+    </div>
+  </a>
+  </div>
+

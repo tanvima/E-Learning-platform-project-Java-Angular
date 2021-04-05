@@ -1,0 +1,56 @@
+<div class="container-fluid text-center"> 
+  <h1>Statistics</h1>
+  <hr class="hrstyle" />
+</div>
+<div class="container">
+  <div class="row">
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+
+  <div class="chart-wrapper"><h4>Courses per Category</h4>
+      <canvas baseChart 
+      [data]="doughnutChartData"
+      [labels]="doughnutChartLabels"
+      [chartType]="doughnutChartType"
+      [colors]="doughnutChartColor">
+      
+    </canvas>
+  </div>
+   <div class="chart-wrapper   mt-5"> <h4>Student Enrollment </h4>
+          <canvas class="h-80" baseChart 
+          [datasets]="enrollBarChartData"
+          [labels]="enrollBarLabels"
+          [options]="enrollBarOptions"
+          [plugins]="enrollBarChartPlugins"
+          [legend]="enrollBarLegend"
+          [colors]="enrollBarColor" 
+          [chartType]="enrollBar">
+        </canvas>
+      </div>
+      <div class="chart-wrapper  mt-5 justify-content-center">
+          <h4>Likes of Courses </h4>
+          <canvas baseChart 
+              [datasets]="lineChartData" 
+              [labels]="lineChartLabels" 
+              [options]="lineChartOptions"
+              [colors]="lineChartColors" 
+              [legend]="lineChartLegend" 
+              [chartType]="'line'" 
+              [plugins]="lineChartPlugins">
+          </canvas>
+      </div>
+  
+      <div class="chart-wrapper   mt-5"><h4>Course Rating</h4>
+          <canvas class="h-80" baseChart 
+          [datasets]="ratingBarChartData"
+          [labels]="ratingBarLabels"
+          [options]="ratingOptions"
+          [plugins]="ratingBarChartPlugins"
+          [legend]="ratingLegend"
+          [colors]="ratingColor" 
+          [chartType]="ratingBar">
+        </canvas>
+      </div>
+</div>
+  </div>
+</div>

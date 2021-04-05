@@ -1,0 +1,47 @@
+
+<div class="body">
+<ng-container *ngIf="course != ''; else elseBlock">
+    <div class="media" *ngFor="let c of course">
+        
+        <div class="container">
+            <div class="column">
+                <h2 class="h3c">Course</h2>&nbsp;
+                <img class="img" [src]='c.courseLogo' alt="Media not supported">
+            </div>
+            <div class="media-body">
+                <h3>Title:</h3>
+                <p class="mt-text">{{c.courseName}}</p>
+                <h3>Description:</h3>
+                <p class="mt-text">{{c.courseDesc}}</p>
+                <h3>Duration:</h3> 
+                <p class="mt-text">{{c.noOfVideo}} weeks</p>  
+           </div>
+           <div class="remove-button">
+                <button class="btn btn-secondary" (click)="removeFromCart(c.courseId)">Remove <i class="fa fa-trash" aria-hidden="true"></i></button>
+           </div>
+        </div>
+    </div>
+    <br>
+    <div class="proceed-button">
+        <button class="button2" (click)="enrollAll()">Proceed to Enroll</button>
+    </div>
+    
+</ng-container>
+<br>
+
+
+<ng-template #elseBlock>
+   
+    <div class="container d-flex justify-content-center align-items-center" [ngStyle]="{'box-shadow':'none'}">
+       
+        <div >
+            <img alt="Media not supported" src="data:image/png;base64,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" 
+                width="600" height="450" alt="empty cart">
+        </div> 
+    </div>
+    <div class="container d-flex justify-content-center align-items-center" [ngStyle]="{'box-shadow':'none'}">
+        <h1>Cart is empty</h1>
+    </div>
+
+</ng-template>
+   

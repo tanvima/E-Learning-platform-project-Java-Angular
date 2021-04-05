@@ -1,0 +1,96 @@
+<nav class="navbar navbar-expand-lg d-flex bd-highlight mb-3">
+  <a [routerLink]= "[{outlets: {admin: 'adminhome'}}]"><img class="img-fluid" src="../../../assets/logo.png" height="150px" width="150px" alt="LOGO" ></a>
+  <a class="mr-auto p-2 bd-highlight" (click)="showHide()" data-toggle="tooltip" title="Menu"><i class="fa fa-bars fa-lg ml-3" aria-hidden="true"></i></a>
+  <a class=" p-2 bd-highlight" [routerLink]= "[{outlets: {admin: 'adminhome'}}]" data-toggle="tooltip" title="Home"><i class="fa fa-home fa-lg" aria-hidden="true" ></i></a>
+  <!-- <a class=" p-2 bd-highlight"><i class="fa fa-bell fa-lg" aria-hidden="true"></i></a> -->
+  <a class="p-2 bd-highlight" (click)="logout()" data-toggle="tooltip" title="Logout"><i class="fa fa-sign-out fa-lg" aria-hidden="true"></i></a> 
+</nav>
+
+
+<div class="container-fluid">
+  <!-- Sidebar -->
+  <div class="row">
+    <nav class="">
+      <div class="list-unstyled components  collapse list-unstyled" *ngIf="isVisible">
+        <mat-accordion>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <mat-icon>view_list</mat-icon> 
+                <p>Categories</p>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <span [routerLink]= "[{outlets: {admin: 'category-list'}}]">All Categories</span>
+            <hr>
+            <span [routerLink]="[{outlets: {admin: 'add-category'}}]">Add Category</span>
+          </mat-expansion-panel>
+        </mat-accordion>
+        <hr>
+        <mat-accordion>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <mat-icon>school</mat-icon>
+                <p>Courses</p>
+              </mat-panel-title>
+
+            </mat-expansion-panel-header>
+            <span  [routerLink]="[{outlets: {admin: 'course-list'}}]">All Courses</span>
+            <hr>
+            <span  [routerLink]="[{outlets: {admin: 'add-course'}}]">Add Course</span>
+          </mat-expansion-panel>
+        </mat-accordion>
+        <hr>
+        <mat-accordion>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <mat-icon>video_library</mat-icon>
+                <p>Videos</p>
+              </mat-panel-title>
+
+            </mat-expansion-panel-header>
+            <span [routerLink]="[{outlets: {admin: 'video-list'}}]">All Videos</span>
+            <hr>
+            <span [routerLink]="[{outlets: {admin: 'add-video'}}]">Add Video</span>
+          </mat-expansion-panel>
+        </mat-accordion>
+        <hr>
+        <mat-accordion>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <mat-icon>account_circle</mat-icon>
+                <p>User</p>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <span  [routerLink]="[{outlets: {admin: 'unblock-user'}}]">Unblock User</span>
+            <hr>
+            <span [routerLink]="[{outlets: {admin: 'userlog'}}]">User Log activity</span>
+          </mat-expansion-panel>
+        </mat-accordion>
+        <hr>
+        <mat-accordion>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <mat-icon> bar_chart</mat-icon>
+                <p>Statistics</p>
+              </mat-panel-title>
+
+            </mat-expansion-panel-header>
+            <span  [routerLink]="[{outlets: {admin: 'charts'}}]">Charts</span>
+
+          </mat-expansion-panel>
+        </mat-accordion>
+      </div>
+    </nav>
+    <nav class="col-xl-9 col-lg-12 col-md-12 col-sm-12 container-fluid">
+      <div class="router-outlet-div">
+        <div class="router-outlet">
+          <router-outlet name="admin"></router-outlet>
+        </div>
+      </div>
+    </nav>
+  </div>
+</div>

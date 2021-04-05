@@ -1,0 +1,15 @@
+<ng-container *ngIf="userroleString == 'ROLE_user' || userroleString == null ">
+  <app-header></app-header>
+  <div class="router-outlet">
+
+    <router-outlet></router-outlet>
+  </div>
+</ng-container>
+
+
+<ng-container *ngIf="userroleString == 'ROLE_admin'">
+  <app-admin-sidenav></app-admin-sidenav>
+</ng-container>
+
+<app-footer></app-footer>
+

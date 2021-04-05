@@ -1,0 +1,99 @@
+<div class="body" >
+  <ng-container *ngIf="course != ''; else elseBlock">
+  <div class="media" *ngFor="let c of course;let index=index">
+    <div class="container">
+      <div class="column">
+        <!-- <h2 class="text-size">Course</h2> -->
+        &nbsp;
+        <img
+        [src]=c.courseLogo alt="Media not supported"
+      />
+      </div>
+      <div class="media-body">
+        <!-- <h3>Title:</h3> -->
+        <h3>
+          <p class="h3" (click)="gotoCourse(c.courseId)">{{ c.courseName }} </p>
+        </h3>
+        <!-- <h3>Description:</h3> -->
+        <p class="mt-text h6 text-truncate">{{ c.courseDesc }}</p>
+        <!-- <h3>Duration:</h3> -->
+        <p class="mt-text">{{ c.noOfVideo }} weeks</p>
+        <h4>
+          Status: {{ c.status |uppercase }}
+        </h4>
+        <!-- ​<mat-icon svgIcon="thumbs-up" inline="true"></mat-icon> -->
+        <!-- Like -->
+        <!-- <span class="material-icons" (click)=Like(c.courseId)> thumb_up </span> -->
+        <ng-container *ngIf="status!=null">
+          <div *ngIf="status[index].msg=='Like'">
+          <span class="material-icons" *ngIf="status[index].msg=='Like'" (click)=Like(c.courseId)>
+            thumb_up
+          </span> <span class="subtextLike">Liked</span>
+        </div>
+          <span class="material-icons" *ngIf="status[index].msg=='Unlike'" (click)=Like(c.courseId)>
+            thumb_up_off_alt
+          </span>
+        </ng-container> 
+          <br>        
+        <!-- ​Commentsection of user -->
+        <mat-accordion >
+          <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+            <form [formGroup]="form">
+              <h4>
+                <input type="text" formControlName="comment" class="input"  placeholder=" Add a comment..." />
+                <mat-icon (click)="addComment(c.courseId)">add_comment
+                </mat-icon>
+
+              </h4>
+            </form>&nbsp;
+            <mat-expansion-panel-header>
+              <mat-panel-title>Comments</mat-panel-title>
+            </mat-expansion-panel-header>
+            <p class="comment-delete-section" *ngFor="let comm of c.comment">
+             <span> {{comm.comment}}</span>
+              <ng-container  *ngIf="comm.userId==userid">
+                <mat-icon class="mb-4" (click)="delComment(comm.id)">delete</mat-icon>
+               
+              </ng-container>
+            </p>
+          </mat-expansion-panel>
+        </mat-accordion>&nbsp;
+       
+      </div>
+      <div class="field">
+        <button class="btn start" (click)="gotoVideoList(c.courseId)">Start</button> &nbsp;
+        <button class="btn certificate" *ngIf = "c.status=='completed'" (click)="watchCertificate(c.courseId)">Certificate</button>&nbsp;
+
+      </div>
+    </div>
+  </div>
+</ng-container>
+
+<ng-template #elseBlock>
+   
+    <div class="container d-flex justify-content-center align-items-center h-100 mycourse"  [ngStyle]="{'box-shadow':'none'}">
+       
+        <div >
+            <img alt="Media not supported" src="https://cdn4.vectorstock.com/i/1000x1000/45/78/book-with-sad-face-grey-icon-bad-literature-vector-33374578.jpg"alt="empty mycourse">
+        </div> 
+    </div>
+    <div class="container d-flex justify-content-center align-items-center"  [ngStyle]="{'box-shadow':'none'}">
+        <h1>Currently not enrolled in any Courses</h1>
+    </div>
+
+</ng-template>
+   
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+

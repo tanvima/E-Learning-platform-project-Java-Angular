@@ -1,0 +1,37 @@
+
+
+    <div class="container">
+      <div class="form">
+        <br>
+        <h1 class="text-center headingform">Add Category</h1> 
+    <form [formGroup]="categoryForm" (ngSubmit)="addCategory()">
+      <div class="form-group">
+        <label for="categoryName">Category Name: </label>
+          <input type="text" id="categoryName" placeholder="Category Name" class="form-control" formControlName="categoryName">
+          <div *ngIf="categoryForm.controls.categoryName?.invalid && categoryForm.controls.categoryName?.touched" [ngStyle]="{'color':'red'}">Please Enter Characters Between 3 to 15 </div> 
+      </div>
+      <div class="form-group">
+        <label for="categoryDesc">Category Description: </label>
+            <!-- <input type="text" id="categoryDesc" placeholder="Category Description" class="form-control" formControlName="categoryDesc"> -->
+            <textarea
+            type="text"
+            class="form-control"
+            formControlName="categoryDesc"
+            placeholder="Category Description"
+            rows="3"
+          ></textarea>
+            <div *ngIf="categoryForm.controls.categoryDesc?.invalid && categoryForm.controls.categoryDesc?.touched" [ngStyle]="{'color':'red'}">Please Enter Characters Between 10 to 100 </div>
+      </div>
+      <div class="form-group ">
+        <label for="categoryLogo">Category Logo: </label>
+            <input type="file" id="categoryLogo" placeholder="Category Logo" class="form-control" formControlName="categoryLogo">
+      </div>
+      <div class="form-group">
+        <button [disabled]="!categoryForm.valid" class="btn " type="submit"  style="width: 30%">
+            Add Category
+        </button>
+      </div>
+    </form>
+    </div>
+    </div>
+   

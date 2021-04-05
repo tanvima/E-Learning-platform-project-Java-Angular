@@ -1,0 +1,180 @@
+<nav class="navbar navbar-expand-lg navbar-dark">
+  <a href="#" class="navbar-brand">
+    <img src="../../../assets/logo.png" height="70" width="200" alt="Logo"
+  /></a>
+
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto ">
+      <li class="nav-item dropdown d-flex justify-content-center">
+        <div>
+          <button
+            class="btn btn-secondary dropdown-toggle"
+            type="button"
+            id="dropdownMenuButton"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            Explore
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a
+              class="dropdown-item option"
+              *ngFor="let c of categories"
+              (click)="getCategory(c.categoryId, c.categoryName)"
+            >
+              {{ c.categoryName }}</a
+            >
+          </div>
+        </div>
+        <div class="nav-item ">
+          <!-- mx-2 my-lg-0 -->
+          <div class="form-group mb-0">
+            <mat-form-field appearance="fill" class="example-full-width">
+              <mat-label>Search Courses</mat-label>
+              <input
+                type="text"
+                placeholder="Pick one"
+                aria-label="Number"
+                matInput
+                [formControl]="myControl"
+                [matAutocomplete]="auto"
+              />
+              <mat-autocomplete #auto="matAutocomplete">
+                <mat-option
+                  *ngFor="let option of filteredOptions | async"
+                  [value]="option"
+                  (click)="gotoCourse(option)"
+                 
+                >
+                  {{ option }}
+                </mat-option>
+              </mat-autocomplete>
+            </mat-form-field>
+    
+           
+          </div>
+        </div>
+      </li>
+    </ul>
+    
+    <ul class="navbar-nav mr-sm-2 ">
+      <!--Home button-->
+      <li class="mx-2 ">
+        <button (click)="gotoHome()" matTooltip="Home" class="d-sm-none d-lg-block d-xl-block d-xs-none">
+          <mat-icon aria-hidden="false" aria-label="Example home icon"
+            >home </mat-icon>
+        </button>
+        <span class="d-sm-block d-lg-none d-xl-none d-xs-block mt-1 "> 
+          <li class="mx-2 text-center w-100">
+          <button (click)="gotoHome()" matTooltip="Home">
+            <mat-icon aria-hidden="false" aria-label="Example home icon"
+              >home </mat-icon> <span class="logotext"> Home </span> 
+          </button></span>
+      </li>
+      <ng-container *ngIf="userid != null">
+        <!--My course button-->
+        <li class="mx-2 ">
+          <button (click)="gotoMycourse()" matTooltip="My Courses" class="d-sm-none d-lg-block d-xl-block d-xs-none">
+            <mat-icon aria-hidden="false" aria-label="Example home icon"
+              >auto_stories</mat-icon
+            >
+          </button>
+          <span class="d-sm-block d-lg-none d-xl-none d-xs-block mt-1">
+             <li class="mx-2 text-center w-100">
+            <button (click)="gotoMycourse()" matTooltip="My Courses">
+              <mat-icon aria-hidden="false" aria-label="Example home icon"
+                >auto_stories</mat-icon
+              >   <span class="logotext"> My Courses </span>
+            </button> </span>
+        </li>
+        <!--Cart button-->
+        <li class="mx-2 ">
+          <button (click)="gotoCart()" matTooltip="Course Cart" class="d-sm-none d-lg-block d-xl-block d-xs-none">
+            <mat-icon
+              aria-hidden="false"
+              aria-label="Example home icon"
+              [matBadge]="cartsize1"
+              matBadgePosition="after"
+              matBadgeColor="accent"
+              >shopping_cart</mat-icon
+            >
+          </button>
+          <span class="d-sm-block d-lg-none d-xl-none d-xs-block mt-2"> <li class="mx-2 text-center">
+            <button (click)="gotoCart()" matTooltip="Course Cart">
+              <mat-icon
+                aria-hidden="false"
+                aria-label="Example home icon"
+                [matBadge]="cartsize1"
+                matBadgePosition="after"
+                matBadgeColor="accent"
+                >shopping_cart</mat-icon
+              > <span class="logotext"> My Cart </span>
+            </button></span>
+        </li>
+      </ng-container>
+      <li class="text-center">
+        <ng-container *ngIf="userid != null">
+          <div class="dropdown">
+           <ng-container> <button
+              class="menuIcon"
+              id="dropdownMenuButton"
+              data-toggle="dropdown"
+            >
+              <mat-icon aria-hidden="false" aria-label="Example home icon">
+                menu</mat-icon 
+              > <span class="logotext d-sm-inline d-lg-none d-xl-none d-xs-inline">My Profile</span>
+            </button></ng-container>
+           
+            <div
+              class="dropdown-menu nav-menu"
+              aria-labelledby="dropdownMenuButton"
+            >
+              <a
+                class="dropdown-item dropText"
+                (click)="openEditProfileDialog()"
+              >
+                <mat-icon
+                  aria-hidden="false"
+                  class="dropText"
+                  aria-label="Example home icon"
+                >
+                  perm_identity</mat-icon
+                >
+                My Profile</a
+              >
+              <a class="dropdown-item dropText" (click)="logout()">
+                <mat-icon
+                  aria-hidden="false"
+                  class="dropText"
+                  aria-label="Example home icon"
+                  >logout</mat-icon
+                >
+                Logout</a
+              >
+            </div>
+          </div>
+        </ng-container>
+        <ng-container *ngIf="userid == null">
+          <button class="menuIcon" matTooltip="login" (click)="openLoginDialog()">
+            <mat-icon aria-hidden="false" aria-label="Example home icon">
+              login</mat-icon
+            ><span class="logotext d-sm-inline d-lg-none d-xl-none d-xs-inline">Login</span>
+          </button>
+        </ng-container>
+      </li>
+    </ul>
+  </div>
+</nav>

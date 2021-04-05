@@ -1,0 +1,70 @@
+<div class="home container">
+    <div class="row" >
+    
+    <div class="number data1 data col">
+        <h1 class="title-cat">Categories</h1>
+       <span class="title"> {{no_of_categories}} </span>
+    </div>
+    
+    <div class="number data2 data col"><h1 class="title-cat">Courses</h1>
+        <span class="title"> {{no_of_courses}}</span> </div>
+    
+        <div class="number data3 data  col"><h1 class="title-cat">Ongoing Courses</h1>
+        <span class="title">{{no_of_active_students}}</span> </div>
+    
+        <div class="number data4  data col"><h1 class="title-cat">Completed Courses</h1>
+            <span class="title">{{no_of_complete_course}}</span> </div>
+    </div>
+    
+  
+   
+        <!-- <div class="chart-wrapper col">
+            <h1 class="title-cat">Courses per category</h1>
+            <canvas baseChart 
+            [datasets]="radarChartData"
+            [options]="radarChartOptions"
+            [labels]="radarChartLabels"
+            [chartType]="radarChartType">
+          </canvas>
+        </div>   -->
+ 
+        <div class="chart-wrapper col mt-5 justify-content-center">
+            <h1>Popular Courses</h1> 
+            <canvas baseChart 
+                [datasets]="lineChartData" 
+                [labels]="lineChartLabels" 
+                [options]="lineChartOptions"
+                [colors]="lineChartColors" 
+                [legend]="lineChartLegend" 
+                [chartType]="'line'" 
+                [plugins]="lineChartPlugins">
+            </canvas>
+        </div>
+    
+    <!-- <div class="chart-wrapper col"> Courses Per Category
+        <canvas baseChart 
+        [data]="doughnutChartData"
+        [labels]="doughnutChartLabels"
+        [chartType]="doughnutChartType">
+      </canvas>
+    </div> -->
+    
+    <!--Course per category-->
+   
+    
+    </div>
+   
+   
+    
+    <!-- <div class="chart-wrapper col  mt-5">Student Enrollment
+        <canvas class="h-50" baseChart 
+        [datasets]="enrollBarChartData"
+        [labels]="enrollBarLabels"
+        [options]="enrollBarOptions"
+        [plugins]="enrollBarChartPlugins"
+        [legend]="enrollBarLegend"
+        [chartType]="enrollBar">
+      </canvas>
+    </div> -->
+    
+    

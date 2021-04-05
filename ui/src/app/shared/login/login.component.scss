@@ -1,0 +1,28 @@
+mat-tab{
+    .form-container{
+        form{
+            .login-button {
+                margin-left: 1.5rem;
+                margin-right: 1.5rem;
+            }
+        }
+    }
+}
+
+.errMsgLongin{
+    color: red;
+    font-size: 12px;
+}
+
+.forgot{
+    cursor: pointer;
+}
+mat-icon{
+    cursor: pointer;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

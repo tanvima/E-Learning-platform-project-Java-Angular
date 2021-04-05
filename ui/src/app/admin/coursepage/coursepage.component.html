@@ -1,0 +1,257 @@
+<div class="container-fluid text-center"> 
+  <h1>Courses</h1>
+  <hr class="hrstyle" />
+</div>
+<div class="container">
+  <div class="row">
+    <label for="category">Category List</label>
+    <select #cId (change)="getCategoryId(cId.value)" class="form-control">
+      <option value="null">All Categories</option>
+      <option *ngFor="let c of category" value="{{ c.categoryId }}">
+        {{ c.categoryName }}
+      </option>
+    </select>
+  </div>
+</div>
+<!-- (click)="courseListFromCategory(cId.value)" -->
+<div class="container">
+
+  <div class="row">
+    <div
+      class="col-sm-12 col-lg-4 col-md-6 col-xs-12"
+      *ngFor="let c of course | async"
+    >
+      <div class="card text-center">
+        <h3>
+          <div class="card-header" (click)="gotocourse(c.courseId)">
+            {{ c.courseName | uppercase }}
+          </div>
+        </h3>
+        <div class="card-body">
+          <img class="img-fluid" [src]="c.courseLogo" class="card-img-top" alt="Media not supported"/>
+         
+          <h3 class="card-text  mt-3"><span class="font-weight-bold">Course Description:</span> {{ c.courseDesc |slice :0 :100}}...</h3>
+          <h3><span class="font-weight-bold">Course Price:</span> {{ c.coursePrice | currency: "INR" }}</h3>
+          <h3> <span class="font-weight-bold">Number of Videos:</span> {{ c.noOfVideo }}</h3>
+          <h3> <span class="font-weight-bold">Author Name: </span>{{ c.authorName}}</h3>
+        </div>
+        <div class="card-footer text-muted">
+          <button
+            type="button"
+            class="btn2"
+            data-toggle="modal"
+            (click)="updateCourseId(c.courseId)"
+            data-target="#myModal"
+          >
+            Update
+          </button>
+          &nbsp;&nbsp;&nbsp;
+          <button class="btn1" (click)="deleteCourse(c.courseId)">Delete</button>
+        </div>
+      </div>
+      <div class="modal fade" id="myModal">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <form [formGroup]="courseUpdateForm">
+              <!-- Modal Header -->
+              <div class="modal-header">
+                <h4 class="modal-title">Update Course</h4>
+                <button type="button" class="close" data-dismiss="modal">
+                  &times;
+                </button>
+              </div>
+  
+              <!-- Modal body -->
+              <div class="modal-body" *ngIf="courseBYId">
+                <div class="form-group">
+                  <label for="courseName">Course Name</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="courseName"
+                  />
+                  <div
+                    *ngIf="
+                      courseUpdateForm.controls.courseName?.invalid &&
+                      courseUpdateForm.controls.courseName?.touched
+                    "
+                    [ngStyle]="{ color: 'red' }"
+                  >
+                    Please Enter Characters Between 3 to 15
+                  </div>
+                </div>
+  
+                <div class="form-group">
+                  <label for="courseDesc">Course Desc</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="courseDesc"
+                  />
+                  <div
+                    *ngIf="
+                      courseUpdateForm.controls.courseDesc?.invalid &&
+                      courseUpdateForm.controls.courseDesc?.touched
+                    "
+                    [ngStyle]="{ color: 'red' }"
+                  >
+                    Please Enter Characters Between 10 to 100
+                  </div>
+                </div>
+                <div>
+                  <label for="courseLogo">Course Logo </label>
+                  <input
+                    type="file"
+                    class="form-control"
+                    name="courseLogo"
+                    formControlName="courseLogo"
+                  />
+                  <img [src]="courseBYId.courseLogo" alt="Media not supported"/>
+                </div>
+                <div>
+                  <label for="coursePrice">Course Price </label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    name="coursePrice"
+                    formControlName="coursePrice"
+                  />
+                </div>
+                <div>
+                  <label for="authorName">Author Name</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="authorName"
+                    formControlName="authorName"
+                  />
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  (click)="updateCourse(c.courseId)"
+                  class="btn btn-info"
+                  data-dismiss="modal"
+                  data-target="#modalDialogUpdated"
+                  data-toggle="modal"
+                >
+                  Save
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-dismiss="modal"
+                >
+                  Close
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="modal" id="modalDialogUpdated">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-body">
+              <p>Category Updated Successfully!!</p>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+              >
+                Ok
+              </button>
+            </div>
+          </div>
+        </div>
+      </div> -->
+    </div>
+  </div>
+</div>
+
+<!--MODALS FOR NOTIFICATION-->
+<!--confirmation-->
+<button
+  data-toggle="modal"
+  [hidden]="true"
+  #confirmation
+  data-target="#modalDialogconfirmation"
+>
+  Confirmation
+</button>
+
+<div class="modal" id="modalDialogconfirmation">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <p>Are you sure?</p>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-secondary"
+          data-dismiss="modal"
+          (click)="confirmDelete()"
+        >
+          OK
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--category not null-->
+<button
+  data-toggle="modal"
+  [hidden]="true"
+  #categorynotnull
+  data-target="#modalDialog"
+>
+  Category Not Null
+</button>
+
+<div class="modal" id="modalDialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <p>
+          {{ enroll }} students enrolled in this course. Cannot delete this
+          course.
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          OK
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--notification-->
+<button
+  data-toggle="modal"
+  [hidden]="true"
+  #notification
+  data-target="#modalDialogNotification"
+>
+  Category Not Null
+</button>
+
+<div class="modal" id="modalDialogNotification">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <p>Course deleted!</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          OK
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

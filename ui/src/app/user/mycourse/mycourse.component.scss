@@ -1,0 +1,111 @@
+
+.container{
+    display: flex;
+    box-shadow: 3px 3px 3px 3px lightgrey;
+    margin-top:20px;  
+}
+.mycourse{
+}
+.column
+{
+    width: 40%;
+}
+.mt-text{
+    color:grey;
+}
+.text{
+    padding-left: 120px;
+    color: black;
+}
+.media-body{
+    padding-top: 15px;
+    width: 50%;
+}
+.media{
+     padding-left:30px;
+    padding-right:30px;
+}
+.field{
+    padding-left: 30px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding-top: 10px;
+    width: 14%;
+}
+.row
+{
+    padding-left: 10px;
+}
+.text-size{
+padding-left: 100px;
+padding-top: 20px;
+}
+.btn{
+    border:none;
+    padding:10px;
+    border-radius:5px;
+}
+.btn:hover {
+    background-color: lightgray;
+}
+
+  h3{
+      color:black;
+      cursor: pointer;
+  }
+  img{
+      width:300px;
+      height: 300px;
+      padding: 10px;
+  }
+  .certificate{
+      background-color: #777777;
+  }
+  .start{
+      background-color:#FFCE2B;
+  }
+  h4{
+     font-weight:500;
+  }p{
+         font-weight: normal;
+  }
+.body{
+    height: auto;
+}
+.material-icons{
+    font-size: 25px;
+    cursor: pointer;
+    padding-top: 0px;
+   height: 18px;
+   width: 20px;
+}
+.input
+{
+    height: 35px;
+    width: 430px;
+  padding-top: 10px;
+  border-radius: 6px;
+  border:grey solid 1px;
+}
+.mat, .mat-icon{
+    font-size: 25px;  
+    padding-bottom: 2%;
+    float: right;
+    padding-right: .25em;
+}
+.mat-expansion-panel-header{
+    font-weight:500 ;
+  }
+  .subtextLike{
+      color:grey;
+      margin:10px
+  }
+  .comment-delete-section{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+  }
+  .del-content{
+      margin-bottom: -2%;
+  }

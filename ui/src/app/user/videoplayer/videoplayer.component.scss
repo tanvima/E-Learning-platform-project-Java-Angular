@@ -1,0 +1,34 @@
+
+.video-player{
+  margin-bottom: 30%;
+}
+
+.title {
+    text-align: left;
+    font-size: 30px;
+  }
+  .hr1 {
+    border: 0.5px solid #6C757D;
+  }
+  .hr {
+    border: 1px solid rgb(139, 130, 130);
+    width: 100%;
+  }
+  .video {
+    width: 100%;
+    height: 80%;
+  }
+  .container {
+    padding: 30px 30px 30px 30px;
+  }
+  .buttons {
+    width: 100%;
+  }
+  .buttons1{
+      border-bottom:1px solid rgba(0,0,0,.12) ;
+      border-top:1px solid rgba(0,0,0,.12) ;
+      padding:10px 0px;
+  }
+.videoDesc{
+  line-height: 1.75rem;
+}

@@ -1,0 +1,73 @@
+.body{
+    background-size: cover;
+    padding-top: 30px;
+   
+}
+.container{
+    display: flex;
+    box-shadow: 3px 2px 3px 3px lightgrey;
+   margin-top: 20px;
+
+}
+.column
+{
+    width: 30%;
+}
+.mt-text{
+    color:grey;
+}
+.text{
+    padding-left: 120px;
+    color:black;
+}
+.media-body{
+    padding-top: 15px;
+    width: 10%;
+}
+.proceed-button{
+   float: right;
+   padding-right: 60px;
+
+}
+.h3c{
+    padding-top: 15px;
+    padding-left: 110px; 
+}
+.button1{
+    
+    color: black;
+    border: none;
+    border-radius:5px;
+    padding: 10px;
+    padding-right: 20px;
+    padding-left: 20px;
+}
+.button2 {
+    background-color: #777777;
+    color: white;
+    border: none;
+    border-radius:5px;
+    padding: 10px;
+  
+}
+.button2:hover{
+    background-color: rgb(31, 175, 31);
+}
+.remove-button{
+    padding-top: 120px;
+    padding-right: 30px;
+    
+}
+
+.img{
+    height: 200px;
+    width: 250px;
+    padding-left: 30px;
+    padding-bottom: 20px;
+}
+.btn-secondary{
+    border: none;
+}
+.btn-secondary:hover{
+    background-color: red;
+}

@@ -1,0 +1,122 @@
+<div class="container-fluid text-center"> 
+  <h1>Categories</h1>
+  <hr class="hrstyle" />
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-lg-4 col-xs-12 col-md-4" *ngFor="let c of category">
+      <div class="card text-center">
+        <h3>
+          <div class="card-header">
+            {{c.categoryName|uppercase}}
+          </div>
+        </h3>
+        <div class="card-body">
+          <img class="img-fluid" [src]="c.categoryLogo" class="card-img-top" alt="Media not supported">
+          <h3> Category Description: </h3>
+          <p >{{c.categoryDesc}}</p>
+        </div>
+  
+        <div class="card-footer text-muted">
+          <button type="button" class="btn2" data-toggle="modal" (click)="updateCategoryId(c.categoryId)"
+            data-target="#myModal">
+            Update
+          </button>&nbsp;&nbsp;&nbsp;
+          <button class="btn1" (click)="deleteCategory(c.categoryId)">Delete</button>
+        </div>
+  
+      </div>
+      <div class="modal fade" id="myModal">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <form [formGroup]="categoryUpdateForm">
+  
+              <div class="modal-header">
+                <h4 class="modal-title">Update Category</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+              </div>
+  
+  
+              <div class="modal-body" *ngIf="categoryById">
+  
+                <div class="form-group">
+                  <label for="categoryName">Category Name</label>
+                  <input type="text" formControlName="categoryName" class="form-control" name="categoryName"
+                    >
+                    <div *ngIf="categoryUpdateForm.controls.categoryName?.invalid && categoryUpdateForm.controls.categoryName?.touched" [ngStyle]="{'color':'red'}">Please Enter Characters Between 3 to 15 </div> 
+                </div>
+  
+                <div class="form-group">
+                  <label for="categoryDesc">Category Desc</label>
+                  
+                    <textarea
+                    type="text"
+                    class="form-control"
+                    formControlName="categoryDesc"
+                    placeholder="Category Description"
+                    rows="3"
+                  ></textarea>
+                    <div *ngIf="categoryUpdateForm.controls.categoryDesc?.invalid && categoryUpdateForm.controls.categoryDesc?.touched" [ngStyle]="{'color':'red'}">Please Enter Characters Between 10 to 100 </div>
+                  </div>
+                <div>
+                  <label for="categoryLogo">Category Logo </label>
+                  <img [src]=categoryById.categoryLogo alt="Media not supported">
+                  <input type="file" name="categoryLogo" formControlName="categoryLogo" class="form-control"
+                    name="categoryLogo">
+                    
+                  
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" (click)="updateCategory(c.categoryId)" class="btn btn-info"
+                  data-dismiss="modal" >Save</button>
+                <button type="button" class="btn btn-secondary " data-dismiss="modal">Close</button>
+              </div>
+            </form>
+  
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+  <!--MODALS FOR NOTIFICATION-->
+  <!--confirmation-->
+  <button data-toggle="modal"  [hidden]="true" #confirmation data-target="#modalDialogconfirmation">Confirmation</button>
+  
+    <div class="modal" id="modalDialogconfirmation">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-body">
+                  <p>Are you sure?</p>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" 
+                          data-dismiss="modal" (click)="confirmdel()">OK</button>
+              </div>
+          </div>
+      </div>
+      </div>
+  
+  <!--category not null-->
+  <button data-toggle="modal" [hidden]="true" #categorynotnull data-target="#modalDialog">Category Not Null</button>
+  
+  <div class="modal" id="modalDialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <p>Category is not empty! Please delete courses before.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" 
+                        data-dismiss="modal">OK</button>
+            </div>
+        </div>
+    </div>
+    </div>
+
+  
+
+  

@@ -1,0 +1,47 @@
+.course-content{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+ 
+}
+
+.card-title{
+    font-weight: 500;
+    padding-top: 0;
+}
+
+.card-body{
+    height: 60px;
+}
+.image-container{
+  width: 100%;
+  height: 60%;
+}
+
+.card-img-top{
+    height: 100%;
+    width: 100%;
+}
+
+
+.card {
+    border-radius: 4px;
+    background: #fff;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.08), 0 0 6px rgba(0, 0, 0, 0.05);
+    transition: 0.3s transform cubic-bezier(0.155, 1.105, 0.295, 1.12),
+      0.3s box-shadow,
+      0.3s -webkit-transform cubic-bezier(0.155, 1.105, 0.295, 1.12);
+    padding: 0;
+    cursor: pointer;
+    height: 400px;
+  }
+.card-div{
+  margin-bottom: 3%;
+}
+  .card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.06);
+  }
+  .oldprice{
+text-decoration: line-through;
+  }

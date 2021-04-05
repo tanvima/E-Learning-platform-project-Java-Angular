@@ -1,0 +1,182 @@
+<section>
+  <div id="header">
+  <div class="maincont">
+      <span class="display-3">Your Course to success</span><br>
+      <p class="display-6 ">Build skills with courses, certificates, and
+          degrees online from world-class universities and companies.Real-world experts teaching real-world skills.</p>
+      <br>
+      <div class="row justify-content-start highlight">
+           <button id="button2" class="col-lg-2 lead highlight" (click)="openLoginDialog()"  *ngIf="userid == null">Join for Free</button>
+      </div>
+  </div>
+  </div>
+  </section>
+
+
+
+
+
+
+
+
+
+<!--GOALS-->
+<div class="container-fluid container-goals  d-sm-none d-lg-block d-xl-block d-xs-none">
+  <div class="row seperateRow py-5 mx-0 justify-content-center">
+      <div class="row mt-4 mb-4 mx-0">
+          <div class="col-lg-12">
+               <p class="text-center h2">Achieve your goals with Cybage e-Learning</p>
+          </div>
+      </div>
+      <div class="row mt-5 mx-0">
+          <div class="col-lg-3">
+          </div>
+          <div class="col-lg-1 col-md-4 col-sm-4 col-xs-4 col-3 text-center me-4 ms-5">
+              <img alt="Media not supported" src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://s3.amazonaws.com/coursera_assets/front-page-rebrand/achieve-your-goals/Icon-Learn.svg?auto=format%2Ccompress&dpr=1&w=&h=55">
+            <p class="pt-2 h5 goaltext">Learn the<br>
+                  latest skills</p>
+                  <span class="gol-desc"> business analytics, graphic design, Python, and more</span>
+          </div>
+          <div class="col-lg-1 col-md-4 col-sm-4 col-xs-4 col-3 text-center mx-5">
+                  <img alt="Media not supported" src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://s3.amazonaws.com/coursera_assets/front-page-rebrand/achieve-your-goals/Icon-Get-Ready.svg?auto=format%2Ccompress&dpr=1&w=&h=55">
+                <p class="pt-2 h5 goaltext">Get ready<br>
+                      for a career</p>
+                      <p> business analytics, graphic design, Python, and more</p>
+              </div>
+          <div class="col-lg-1 col-md-4 col-sm-4 col-xs-4 col-3 text-center mx-5">
+                  <img alt="Media not supported" src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://s3.amazonaws.com/coursera_assets/front-page-rebrand/achieve-your-goals/Icon-Earn-Degree.svg?auto=format%2Ccompress&dpr=1&w=&h=55">
+                <p class="pt-2 h5 goaltext ">Earn<br>
+                      a certificate<br>
+                     </p>
+                      <p>from a leading university in business, computer science, and more</p>
+              </div>
+          <div class="col-lg-1 col-md-4 col-sm-4 col-xs-4 col-3 text-center mx-5">
+                  <img alt="Media not supported" src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://s3.amazonaws.com/coursera_assets/front-page-rebrand/achieve-your-goals/Icon-Upskill-your-org.svg?auto=format%2Ccompress&dpr=1&w=&h=55">
+                <p class="pt-2 h5 goaltext ">Upskill your <br>
+                      organization
+                      <p>with on-demand training and development programs</p>
+              </div>
+          <div class="col-lg-3"></div>
+      </div>
+  </div>
+</div>
+
+<!--CARD CARAOUSEL-->
+<div class="container mb-4">
+  <div >
+    <h2>Popular courses</h2>
+    <hr class="hrstyle"/>
+  </div>
+  
+  </div>
+  
+  <div class="my-5" >
+  
+    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+  
+        <div class="carousel-item " *ngFor="let item of slides; let i = index" [ngClass]="{'active' : i == 0}"
+          data-bs-interval="100000000000000">
+      <div class="container">
+          <div class="row">
+            <!-- <div class="col-lg-1"></div> -->
+            <div [ngClass]="columnlength" *ngFor="let card of item; let cardIndex = index">
+              <!-- <app-coursecard [mycourse]='card' class="col-md-4"></app-coursecard> -->
+              <app-coursecard [mycourse]='card' class="w-100"></app-coursecard>
+            </div>
+            <!-- <div class="col-lg-1"></div> -->
+          </div>
+        </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+  </div>
+<!-- XYZ -->
+<div class="container-fluid image-description-girl d-sm-none d-lg-block d-xl-block d-xs-none">
+  <div class="row mx-0">
+    <div class="col-lg-3"></div>
+    <div class="col-lg-9">
+      <div class="inner-row">
+       <div class="image-girl">
+         <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://s3.amazonaws.com/coursera_assets/front-page-rebrand/secondary-consumer-cta/Image-Next-Step.png?auto=format%2Ccompress&dpr=1&w=471&h=330&q=40" alt="">
+       </div>
+       <div class="image-right-desc pl-5">
+        <div class="image-girl-desc">Take the next step toward your personal and professional goals with Us.</div>
+        <div class="sub-desc">
+          Join now to receive personalized recommendations from the full Coursera catalog.
+        </div>
+        <button id="button2" class="col-lg-2 lead highlight" (click)="openLoginDialog()"  *ngIf="userid == null">Join for Free</button>
+       </div>
+       
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+<!-- </div>
+
+
+<div class="courses">
+
+
+  <div *ngFor='let category of categories , index as i' class="container my-4">
+    <br />
+    <h5>
+      <p>{{category.categoryName}}</p>
+    </h5>
+
+  
+    <div
+      id="multi-item-example"
+      class="carousel slide carousel-multi-item"
+      data-ride="carousel"
+    >
+     
+      <div class="carousel-inner px-4" role="listbox">
+        <div class="carousel-item active" *ngFor='let course of category?.courses'>
+        <h1>  {{course?.courseName}}</h1>
+          <app-coursecard [mycourse]="course"></app-coursecard>
+         
+        </div>
+     
+     
+      </div>
+      <a class="btn prev" href="#multi-item-example" data-slide="prev"
+        >&#8249;</a
+      >
+      <a class="btn next" href="#multi-item-example" data-slide="next"
+        >&#8250;</a
+      >
+    </div>
+  </div> -->
+
+
+

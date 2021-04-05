@@ -1,0 +1,97 @@
+#mainbody {
+	display: grid;
+	grid-template-areas: "header" "categories";
+}
+p{
+    line-height: 1.6;
+    font-weight: 100px;  
+}
+#header {
+	width: 100%;
+	background-image: url("../../../assets/background.jpg");
+	background-color: aquamarine;
+	height: 880px;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	grid-area: header;
+	display: grid;
+	grid-template-columns: 20% 70% 10%;
+	grid-template-rows: 20% 70% 10%;
+}
+#button1 {
+	all: unset;
+	text-align: center;
+	margin: 10px;
+	width: 150px;
+	padding: 10px;
+	border-color: #34515e;
+	border-radius: 2px;
+	background-color :#6c757d;
+	color: white;
+    font-size: 1.3rem;
+}
+#button2 {
+	all: unset;
+	text-align: center;
+	margin: 10px;
+	width: 150px;
+	padding: 10px;
+	border-color: #34515e;
+	border-radius: 2px;
+	background-color:#6c757d;
+	color: white;
+    font-size: 1.3rem;
+}
+.maincont {
+	grid-column-start: 2;
+	grid-row: 2;
+}
+.display-6
+{
+	font-size: x-large;
+}
+.navbar {
+	grid-column: 1/3;
+}
+#button1 {
+	&:hover {
+		transform: scale(1.15);
+		cursor: pointer;
+	}
+}
+#button2 {
+	&:hover {
+		transform: scale(1.15);
+		cursor: pointer;
+	}
+}
+.cornerdata{
+	&:hover {
+		transform: scale(1.25);
+		cursor: pointer;
+	}
+}
+
+
+.seperateRow{
+   /*  background-image: linear-gradient(to bottom, #ece4e4,#fdf7b3); */
+   background-color: white;
+}
+.goals{
+    width: 80%;
+}
+.goaltext{
+    display: block;
+    font-weight: 600;
+    height: 4rem;
+    margin-top: 16px;
+    margin-bottom: 16px;
+    color: rgb(31, 31, 31);
+}
+.goal-desc{
+    background-color: red;
+    font-size: 20px;
+    line-height: 28px;
+    font-weight: normal;
+}
