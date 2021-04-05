@@ -1,0 +1,5 @@
+projectKey=java-major-g7-back
+serverUrl=http://172.27.12.78
+dashboardUrl=http://172.27.12.78/dashboard/index/java-major-g7-back
+ceTaskId=AXiDZI30irXW5IlAPXFX
+ceTaskUrl=http://172.27.12.78/api/ce/task?id=AXiDZI30irXW5IlAPXFX
